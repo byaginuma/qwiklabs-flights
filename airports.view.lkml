@@ -9,7 +9,8 @@ view: airports {
     sql: ${TABLE}.id ;;
   }
 
-  dimension_group: active_date {
+  dimension_group: active {
+    description: "Date this airport became active"
     type: time
     timeframes: [date, week, month, year]
     convert_tz: no
@@ -17,6 +18,7 @@ view: airports {
   }
 
   dimension: act_date {
+    hidden: yes
     description: "Date this airport became active, Default is 01/1970"
     type: string
     sql: CASE WHEN ${TABLE}.act_date = '' THEN '01/1970' ELSE ${TABLE}.act_date END ;;
@@ -28,6 +30,7 @@ view: airports {
   }
 
   dimension: cntl_twr {
+    hidden: yes
     type: string
     sql: ${TABLE}.cntl_twr ;;
   }
