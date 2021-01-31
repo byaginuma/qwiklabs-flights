@@ -1,5 +1,5 @@
 view: carriers {
-  sql_table_name: public.carriers ;;
+  sql_table_name: `looker_flights`.carriers ;;
 
   dimension: code {
     primary_key: yes

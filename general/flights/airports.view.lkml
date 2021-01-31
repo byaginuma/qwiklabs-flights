@@ -1,5 +1,5 @@
 view: airports {
-  sql_table_name: public.airports ;;
+  sql_table_name: `looker_flights`.airports ;;
 
   dimension: id {
     primary_key: yes
@@ -42,7 +42,7 @@ view: airports {
 
   dimension: code {
     type: string
-    sql: ${TABLE}.code ;;
+    sql: rtrim(${TABLE}.code) ;;
   }
 
   dimension: county {

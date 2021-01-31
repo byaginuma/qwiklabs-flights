@@ -1,9 +1,7 @@
-connection: "flightstats"
+connection: "bigquery_public_data_looker"
 # include all views in this project
 include: "*.view"
-# include all dashboards in this project
-# include: "*.dashboard"
-# persist_for: "3 hours"
+
 
 explore: airports {
   group_label: "FAA"
@@ -38,17 +36,5 @@ explore: flights {
     sql_on: ${flights.destination} = ${aircraft_destination.code} ;;
     relationship: many_to_one
     fields: [full_name, city, state, code]
-  }
-
-  join: aircraft_flight_facts {
-    # view_label: "Aircraft"
-    type: left_outer
-    sql_on: ${aircraft.tail_num} = ${aircraft_flight_facts.tail_num} ;;
-    relationship: one_to_one
-  }
-
-  join: aircraft_models {
-    sql_on: ${aircraft.aircraft_model_code} = ${aircraft_models.aircraft_model_code} ;;
-    relationship: many_to_one
   }
 }
