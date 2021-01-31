@@ -4,7 +4,7 @@ connection: "bigquery_public_data_looker"
 include: "/ecomm_dash/*.view"
 include: "/ecomm_dash/*.dashboard"
 
-label: "Sample E-commerce"
+label: "E-Commerce"
 
 datagroup: ecommerce_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
