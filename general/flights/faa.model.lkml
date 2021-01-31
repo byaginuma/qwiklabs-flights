@@ -1,7 +1,7 @@
 connection: "bigquery_public_data_looker"
 # include all views in this project
 include: "*.view"
-
+include: "/z_tests/*.lkml"
 
 explore: airports {
   group_label: "FAA"
