@@ -109,7 +109,7 @@
     type: looker_donut_multiples
     fields: [products.department, users.traffic_source, users.count]
     pivots: [users.traffic_source]
-    sorts: [order_items.created_year desc, order_items.created_month_num, users.count_percent_of_total
+    sorts: [order_items.created_year desc, order_items.created_month_num
         desc 0, products.department, users.traffic_source]
     limit: 500
     column_limit: 50
@@ -166,7 +166,7 @@
     pivots: [products.category]
     filters:
       products.category: Jeans,Accessories,Active,Dresses,Sleep & Lounge,Shorts
-    sorts: [order_items.created_year desc, order_items.created_month_num, users.count_percent_of_total
+    sorts: [order_items.created_year desc, order_items.created_month_num
         desc 0, products.department, users.traffic_source, products.category, order_items.created_date
         desc]
     limit: 500
