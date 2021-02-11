@@ -1,6 +1,6 @@
 
 view: flights {
-  sql_table_name: `looker_flights`.flights ;;
+  sql_table_name: `cloud-training-demos.looker_flights.flights` ;;
 
  dimension: id {
     primary_key: yes

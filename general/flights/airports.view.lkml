@@ -1,5 +1,5 @@
 view: airports {
-  sql_table_name: `looker_flights`.airports ;;
+  sql_table_name: `cloud-training-demos.looker_flights.airports` ;;
 
   dimension: id {
     primary_key: yes
