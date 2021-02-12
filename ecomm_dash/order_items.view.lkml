@@ -151,6 +151,13 @@ view: order_items {
     value_format_name: usd
   }
 
+  measure: total_revenue_from_completed_orders {
+    type: sum
+    sql: ${sale_price} ;;
+    value_format_name: usd
+    filters: [status: "Complete"]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
