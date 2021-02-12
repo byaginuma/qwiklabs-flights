@@ -151,7 +151,8 @@ view: order_items {
     value_format_name: usd
   }
 
-  measure: total_revenue_from_completed_orders {
+  measure: total_revenue_completed {
+    label: "Total Revenue from Completed Orders"
     type: sum
     sql: ${sale_price} ;;
     value_format_name: usd
