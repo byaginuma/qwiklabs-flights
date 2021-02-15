@@ -140,12 +140,6 @@ view: order_items {
     sql: ${order_id} ;;
   }
 
-  measure: order_counts_shipped {
-    type: count_distinct
-    sql: ${order_id} ;;
-    filters: [status: "Shipped"]
-  }
-
   measure: order_item_count {
     type: count
     drill_fields: [detail*]
