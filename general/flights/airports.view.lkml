@@ -10,18 +10,25 @@ view: airports {
   }
 
   dimension_group: active {
-    description: "Date this airport became active"
+    hidden: yes       # not working as of 2021-02-16
+    description: "Date this airport became active; if no data, then January 1970"
     type: time
-    timeframes: [date, week, month, year]
+    timeframes: [month, month_num, year]
     convert_tz: no
-    sql: CASE WHEN ${TABLE}.act_date = '' THEN to_date('1970-01-01', 'YYYY-MM-DD') else to_date(${TABLE}.act_date, 'MM/YYYY') END ;;
+    sql: --CASE WHEN ${TABLE}.act_date = '' THEN '1970-01-01'
+          --else
+          timestamp(date(cast(split(${TABLE}.act_date,"/")[offset(1)] as int64)
+                    , cast(split(${TABLE}.act_date,"/")[offset(0)] as int64)
+                    , 01)
+                    )
+          --END
+          ;;
   }
 
-  dimension: act_date {
+  dimension: act_date {   # values are like '01/1903', '12/2000'
     hidden: yes
-    description: "Date this airport became active, Default is 01/1970"
     type: string
-    sql: CASE WHEN ${TABLE}.act_date = '' THEN '01/1970' ELSE ${TABLE}.act_date END ;;
+    sql: ${TABLE}.act_date ;;
   }
 
   dimension: city {

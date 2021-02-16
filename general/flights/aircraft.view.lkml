@@ -4,7 +4,7 @@ view: aircraft {
   dimension: tail_num {
     type: string
     primary_key: yes
-    sql: ${TABLE}.tail_num ;;
+    sql: rtrim(${TABLE}.tail_num) ;;
   }
 
   dimension: address1 {
@@ -124,7 +124,8 @@ view: aircraft {
 
   dimension: year_built {
     type: date_year
-    sql: TO_DATE(CAST(${TABLE}.year_built AS text), 'YYYY');;
+    sql: DATE(nullif(${TABLE}.year_built,0), 01, 01) ;;
+    # sql: ${TABLE}.year_built ;;
   }
 
   dimension: zip {
