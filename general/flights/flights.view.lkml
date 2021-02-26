@@ -115,7 +115,7 @@ view: flights {
 
   dimension: cancelled {
     view_label: "Flights Details"
-    type: string
+    type: yesno
     sql: ${TABLE}.cancelled ;;
   }
 
@@ -225,7 +225,7 @@ view: flights {
 
     filters: {
       field: cancelled
-      value: "Y"
+      value: "Yes"
     }
   }
 
