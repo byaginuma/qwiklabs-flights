@@ -37,4 +37,9 @@ explore: flights {
     relationship: many_to_one
     fields: [full_name, city, state, code]
   }
+
+  join: aircraft_models {
+    sql_on: ${aircraft.aircraft_model_code} = ${aircraft_models.aircraft_model_code} ;;
+    relationship: many_to_one
+  }
 }

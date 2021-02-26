@@ -4,7 +4,7 @@ view: aircraft {
   dimension: tail_num {
     type: string
     primary_key: yes
-    sql: ${TABLE}.tail_num ;;
+    sql: rtrim(${TABLE}.tail_num) ;;
   }
 
   dimension: address1 {
@@ -84,12 +84,20 @@ view: aircraft {
     sql: ${TABLE}.fract_owner ;;
   }
 
-  dimension_group: last_action {
-    type: time
-    timeframes: [time, date, week, month, year, raw]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.last_action_date ;;
+  # Don't use this one. It complicates the custom measure exercise.
+  # Can't just hide it because hidden fields still show up as suggestions in custom fields.
+  # dimension_group: last_action {
+  #   hidden: yes
+  #   type: time
+  #   timeframes: [time, date, week, month, raw]
+  #   convert_tz: no
+  #   datatype: date
+  #   sql: ${TABLE}.last_action_date ;;
+  # }
+
+  dimension: last_action_year {
+    type: number
+    sql: EXTRACT(YEAR FROM ${TABLE}.last_action_date) ;;
   }
 
   dimension: mode_s_code {
@@ -123,8 +131,12 @@ view: aircraft {
   }
 
   dimension: year_built {
-    type: date_year
-    sql: TO_DATE(CAST(${TABLE}.year_built AS text), 'YYYY');;
+    # type: date_year
+    # sql: DATE(nullif(${TABLE}.year_built,0), 01, 01) ;;   # makes the SQL too clunky
+
+    type: number
+    sql: nullif(${TABLE}.year_built,0) ;;
+    value_format_name: id
   }
 
   dimension: zip {

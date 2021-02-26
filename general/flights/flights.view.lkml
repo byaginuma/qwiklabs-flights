@@ -183,7 +183,7 @@ view: flights {
   dimension: tail_num {
     view_label: "Flights Details"
     type: string
-    sql: ${TABLE}.tail_num ;;
+    sql: rtrim(${TABLE}.tail_num) ;;
   }
 
   dimension: arrival_status {
