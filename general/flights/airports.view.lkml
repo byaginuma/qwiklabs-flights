@@ -44,7 +44,7 @@ view: airports {
 
   dimension: control_tower {
     type: yesno
-    sql: ${TABLE}.cntl_twr = 'Y' ;;
+    sql: ${TABLE}.cntl_twr = TRUE ;;
   }
 
   dimension: code {
@@ -76,7 +76,7 @@ view: airports {
 
   dimension: joint_use {
     type: yesno
-    sql: ${TABLE}.joint_use = 'Y' ;;
+    sql: ${TABLE}.joint_use = "Y" ;;
   }
 
   dimension: latitude {
@@ -97,7 +97,7 @@ view: airports {
 
   dimension: is_major {
     type: yesno
-    sql: ${TABLE}.major = 'Y' ;;
+    sql: ${TABLE}.major = TRUE ;;
   }
 
   dimension: state {
